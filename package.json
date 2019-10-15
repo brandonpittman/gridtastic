@@ -15,7 +15,9 @@
     "xo": "^0.25.3"
   },
   "keywords": [
-    "gridsome"
+    "gridsome",
+    "meow",
+    "cli"
   ],
   "author": "Brandon Pittman",
   "license": "MIT"
