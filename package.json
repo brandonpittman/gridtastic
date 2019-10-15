@@ -14,10 +14,9 @@
   "devDependencies": {
     "eslint": "^6.5.1"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "gridsome"
+  ],
+  "author": "Brandon Pittman",
+  "license": "MIT"
 }
