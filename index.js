@@ -21,8 +21,8 @@ const cli = meow(`
 
 if (cli.flags.override) {
 	if (cli.flags.override === 'html') {
-		fs.copyFileSync('./templates/index.html', '../../src/index.html');
+		fs.copyFileSync('./templates/index.html', './src/index.html');
 	} else if (cli.flags.override === 'vue') {
-		fs.copyFileSync('./templates/App.vue', '../../src/App.vue');
+		fs.copyFileSync('./templates/App.vue', './src/App.vue');
 	}
 }
