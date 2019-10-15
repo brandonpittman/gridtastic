@@ -20,6 +20,10 @@ const cli = meow(`
 });
 
 if (cli.flags.override) {
+	if (!fs.existsSync('./src')) {
+		fs.mkdirSync('./src');
+	}
+
 	if (cli.flags.override === 'html') {
 		fs.copyFileSync('./templates/index.html', './src/index.html');
 	} else if (cli.flags.override === 'vue') {
