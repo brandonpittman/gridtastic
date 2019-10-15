@@ -1,6 +1,6 @@
 {
   "name": "gridsome-helpers",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A suite of helpers to augment the Gridsome CLI.",
   "main": "cli.js",
   "bin": {
