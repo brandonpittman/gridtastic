@@ -1,18 +1,18 @@
 {
   "name": "gridsome-helpers",
   "version": "0.0.3",
-  "description": "",
-  "main": "index.js",
+  "description": "A suite of helpers to augment the Gridsome CLI.",
+  "main": "cli.js",
   "bin": {
-    "gridsome-helpers": "./index.js"
+    "gridsome-helpers": "./cli.js"
   },
   "dependencies": {
-    "eslint-config-xo": "^0.27.1",
-    "meow": "^5.0.0",
-    "xo": "^0.25.3"
+    "meow": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.5.1"
+    "eslint": "^6.5.1",
+    "eslint-config-xo": "^0.27.1",
+    "xo": "^0.25.3"
   },
   "keywords": [
     "gridsome"
