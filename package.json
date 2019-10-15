@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "gridsome-helpers": "./index.js"
+  },
   "dependencies": {
     "eslint-config-xo": "^0.27.1",
     "meow": "^5.0.0",
