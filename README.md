@@ -4,11 +4,13 @@ A suite of helpers to augment the Gridsome CLI.
 
 ## Usage
 ```sh
-$ gridsome-helpers -o vue|html
-```
+$ gridsome-helpers -o html|vue
 
-## Flags
-```sh
---override, -o html|vue
-  Choose to override `index.html` or `App.vue`
+Options
+  --override, -o html|vue         Override filetype
+  --component, -c ComponentName   Create component skeleton
+  --page, -p PageName             Create page skeleton
+  --layout, -l LayoutName         Create layout skeleton
+  --template, -t TemplateName     Create template skeleton
+  --help, -h                      Show help
 ```
