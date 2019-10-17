@@ -8,6 +8,7 @@ const createPage = require('./lib/createPage');
 const createComponent = require('./lib/createComponent');
 const createLayout = require('./lib/createLayout');
 const createTemplate = require('./lib/createTemplate');
+const deleteReadme = require('./lib/deleteReadme');
 const cli = meow(`
 
   Usage
@@ -69,6 +70,9 @@ if (cli.flags.component && cli.flags.component.length > 0) {
 	createComponent(pascalcase(cli.flags.component));
 }
 
+if (cli.flags.deleteReadme) {
+	deleteReadme();
+}
 
 if (Object.keys(cli.flags).length === 2) {
 	cli.showHelp();
