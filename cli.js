@@ -20,6 +20,7 @@ const cli = meow(`
     --page, -p PageName             Create page skeleton
     --layout, -l LayoutName         Create layout skeleton
     --template, -t TemplateName     Create template skeleton
+    --delete-readme                 Delete Gridsome README.md files inside src directories
     --help, -h                      Show help
 `, {
 	flags: {
