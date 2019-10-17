@@ -14,3 +14,10 @@ Options
   --template, -t TemplateName     Create template skeleton
   --help, -h                      Show help
 ```
+
+## Examples
+
+```sh
+gridsome-helpers -c some-component  # creates ./src/components/SomeComponent.vue
+gridsome-helpers -l SomeLayout  # creates ./src/layouts/SomeLayout.vue
+```
