@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 'use strict';
 const meow = require('meow');
-const override = require('./lib/override');
+const override = require('./lib/override.js');
 const cli = meow(`
 
   Usage
