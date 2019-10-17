@@ -17,6 +17,7 @@
   },
   "files": [
     "cli.js",
+    "/lib/override.js",
     "templates/App.vue",
     "templates/index.html"
   ],
