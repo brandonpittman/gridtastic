@@ -15,8 +15,8 @@ Usage
     fresh                            Delete Gridsome boilerplate pages and folder-specific README.md files
 
   Options 
-    --repo                           GITHUB_USER/REPO_NAME
-    --dest                           Folder to clone Gridsome starter project to
+    --repo, -r                       GITHUB_USER/REPO_NAME
+    --dest, -d                       Folder to clone Gridsome starter project to
     --html                           Denotes index.html
     --vue                            Denotes App.vue
     --template, -t                   /templates
