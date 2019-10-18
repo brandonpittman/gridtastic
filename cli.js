@@ -42,7 +42,6 @@ const command = cli.input[0];
 
 switch (command) {
 	case 'scaffold':
-		console.log('scaffold');
 		copyTemplate(pascalcase(cli.flags.type), pascalcase(cli.flags.name));
 		break;
 
