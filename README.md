@@ -4,21 +4,21 @@ A suite of helpers to augment the Gridsome CLI.
 
 ## Usage
 ```sh
-$ gridsome-helpers -o html|vue
+  Usage
+    $ gridsome-helpers
 
-Options
-  --override, -o html|vue         Override filetype
-  --component, -c ComponentName   Create component skeleton
-  --page, -p PageName             Create page skeleton
-  --layout, -l LayoutName         Create layout skeleton
-  --template, -t TemplateName     Create template skeleton
-  --delete-readme                 Delete Gridsome README.md files inside src directories
-  --help, -h                      Show help
+    override html|vue                           Override filetype
+    scaffold -t TYPE -n NAME                    Scaffold out a new file
+    fresh                                       Delete Gridsome boilerplate pages and folder-specific README.md files
+
+  Options 
+    --type, -t  Page|Template|Layout|Component  Filetype to be scaffolded
+    --name, -n  SomeFilename                    Filename to be used (will be pascal cased by CLI)
+    --help, -h                                  Show help
 ```
 
 ## Examples
 
 ```sh
-gridsome-helpers -c some-component  # creates ./src/components/SomeComponent.vue
-gridsome-helpers -l SomeLayout  # creates ./src/layouts/SomeLayout.vue
+gridsome-helpers scaffold -t component -n some-component  # creates ./src/components/SomeComponent.vue
 ```

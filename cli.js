@@ -5,13 +5,12 @@
 const meow = require('meow');
 const pascalcase = require('pascalcase');
 
-const isGridsomeProject = require('./lib/isGridsomeProject');
 const override = require('./lib/override');
 const copyTemplate = require('./lib/copyTemplate');
 const fresh = require('./lib/fresh');
 
 const cli = meow(`
-  Usage
+Usage
     $ gridsome-helpers
 
     override html|vue                           Override filetype
@@ -38,8 +37,6 @@ const cli = meow(`
 		}
 	}
 });
-
-isGridsomeProject();
 
 const command = cli.input[0];
 
