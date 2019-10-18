@@ -1,80 +1,62 @@
 #! /usr/bin/env node
+
 'use strict';
 
 const meow = require('meow');
 const pascalcase = require('pascalcase');
+
+const isGridsomeProject = require('./lib/isGridsomeProject');
 const override = require('./lib/override');
-const createPage = require('./lib/createPage');
-const createComponent = require('./lib/createComponent');
-const createLayout = require('./lib/createLayout');
-const createTemplate = require('./lib/createTemplate');
-const deleteReadme = require('./lib/deleteReadme');
+const copyTemplate = require('./lib/copyTemplate');
+const fresh = require('./lib/fresh');
+
 const cli = meow(`
-
   Usage
-    $ gridsome-helpers -o html|vue
+    $ gridsome-helpers
 
-  Options
-    --override, -o html|vue         Override filetype
-    --component, -c ComponentName   Create component skeleton
-    --page, -p PageName             Create page skeleton
-    --layout, -l LayoutName         Create layout skeleton
-    --template, -t TemplateName     Create template skeleton
-    --delete-readme                 Delete Gridsome README.md files inside src directories
-    --help, -h                      Show help
+    override html|vue                           Override filetype
+    scaffold -t TYPE -n NAME                    Scaffold out a new file
+    fresh                                       Delete Gridsome boilerplate pages and folder-specific README.md files
+
+  Options 
+    --type, -t  Page|Template|Layout|Component  Filetype to be scaffolded
+    --name, -n  SomeFilename                    Filename to be used (will be pascal cased by CLI)
+    --help, -h                                  Show help
 `, {
 	flags: {
 		help: {
 			alias: 'h',
 			type: 'boolean'
 		},
-		override: {
-			type: 'string',
-			alias: 'o'
-		},
-		component: {
-			type: 'string',
-			alias: 'c'
-		},
-		layout: {
-			type: 'string',
-			alias: 'l'
-		},
-		page: {
-			type: 'string',
-			alias: 'p'
-		},
-		template: {
+		type: {
 			type: 'string',
 			alias: 't'
+		},
+		name: {
+			type: 'string',
+			alias: 'n'
 		}
 	}
 });
 
-if (cli.flags.override) {
-	override(cli);
-}
+isGridsomeProject();
 
-if (cli.flags.page && cli.flags.page.length > 0) {
-	createPage(pascalcase(cli.flags.page));
-}
+const command = cli.input[0];
 
-if (cli.flags.template && cli.flags.template.length > 0) {
-	createTemplate(pascalcase(cli.flags.template));
-}
+switch (command) {
+	case 'scaffold':
+		console.log('scaffold');
+		copyTemplate(pascalcase(cli.flags.type), pascalcase(cli.flags.name));
+		break;
 
-if (cli.flags.layout && cli.flags.layout.length > 0) {
-	createLayout(pascalcase(cli.flags.layout));
-}
+	case 'override':
+		override(cli.input[1]);
+		break;
 
-if (cli.flags.component && cli.flags.component.length > 0) {
-	createComponent(pascalcase(cli.flags.component));
-}
+	case 'fresh':
+		fresh();
+		break;
 
-if (cli.flags.deleteReadme) {
-	deleteReadme();
-}
-
-if (Object.keys(cli.flags).length === 2) {
-	cli.showHelp();
+	default:
+		cli.showHelp();
 }
