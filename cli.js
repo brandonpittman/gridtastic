@@ -2,33 +2,36 @@
 
 'use strict';
 
-const pascalcase = require('pascalcase');
+const meow = require('meow');
+const gridsomeHelpers = require('.');
 
-const parser = require('./lib/parser');
-const override = require('./lib/override');
-const scaffold = require('./lib/scaffold');
-const fresh = require('./lib/fresh');
+const cli = meow(`
+Usage
+    $ gridsome-helpers
 
-const cli = parser;
-const {input, flags, showHelp} = cli;
-const command = input[0];
+    override html|vue                           Override filetype
+    scaffold -t TYPE -n NAME                    Scaffold out a new file
+    fresh                                       Delete Gridsome boilerplate pages and folder-specific README.md files
 
-switch (command) {
-	case 'scaffold':
-		scaffold(
-			pascalcase(flags.type),
-			pascalcase(flags.name)
-		);
-		break;
+  Options 
+    --type, -t  Page|Template|Layout|Component  Filetype to be scaffolded
+    --name, -n  SomeFilename                    Filename to be used (will be pascal cased by CLI)
+    --help, -h                                  Show help
+`, {
+	flags: {
+		help: {
+			alias: 'h',
+			type: 'boolean'
+		},
+		type: {
+			type: 'string',
+			alias: 't'
+		},
+		name: {
+			type: 'string',
+			alias: 'n'
+		}
+	}
+});
 
-	case 'override':
-		override(input[1]);
-		break;
-
-	case 'fresh':
-		fresh();
-		break;
-
-	default:
-		showHelp();
-}
+gridsomeHelpers(cli);
