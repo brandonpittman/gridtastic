@@ -2,7 +2,6 @@ const chalk = require('chalk');
 const override = require('./lib/override');
 const scaffold = require('./lib/scaffold');
 const fresh = require('./lib/fresh');
-const pascalcase = require('pascalcase');
 const degit = require('./lib/degit');
 
 module.exports = ({input, flags, showHelp}) => {
@@ -34,10 +33,7 @@ module.exports = ({input, flags, showHelp}) => {
 			break;
 
 		case 'scaffold':
-			scaffold(
-				pascalcase(flags.type),
-				pascalcase(flags.name)
-			);
+			scaffold(flags);
 			break;
 
 		case 'override':

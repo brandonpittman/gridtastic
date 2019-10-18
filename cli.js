@@ -9,19 +9,22 @@ const cli = meow(`
 Usage
     $ gridtastic
 
-    init --repo REPO --dest DEST                Download Gridsome starter
-    override --html --vue                       Override App.vue and/or index.html
-    scaffold --type TYPE --name NAME            Scaffold out a new file
-    fresh                                       Delete Gridsome boilerplate pages and folder-specific README.md files
+    init --repo REPO --dest DEST     Download Gridsome starter
+    override --html --vue            Override App.vue and/or index.html
+    scaffold --TYPE --name NAME      Scaffold out a new file
+    fresh                            Delete Gridsome boilerplate pages and folder-specific README.md files
 
   Options 
-    --repo                                      GITHUB_USER/REPO_NAME
-    --dest                                      Folder to clone Gridsome starter project to
-    --html                                      Denotes index.html
-    --vue                                       Denotes App.vue
-    --type, -t  Page|Template|Layout|Component  Filetype to be scaffolded
-    --name, -n  SomeFilename                    Filename to be used (will be pascal cased by CLI)
-    --help, -h                                  Show help
+    --repo                           GITHUB_USER/REPO_NAME
+    --dest                           Folder to clone Gridsome starter project to
+    --html                           Denotes index.html
+    --vue                            Denotes App.vue
+    --template, -t                   /templates
+    --page, -p                       /pages
+    --component, -c                  /components
+    --layout, -l                     /layouts
+    --name, -n  SomeFilename         Filename to be used (will be pascal cased by CLI)
+    --help, -h                       Show help
 `, {
 	flags: {
 		help: {
@@ -42,8 +45,20 @@ Usage
 			type: 'string',
 			alias: 'd'
 		},
-		type: {
-			type: 'string',
+		component: {
+			type: 'boolean',
+			alias: 'c'
+		},
+		page: {
+			type: 'boolean',
+			alias: 'p'
+		},
+		layout: {
+			type: 'boolean',
+			alias: 'l'
+		},
+		template: {
+			type: 'boolean',
 			alias: 't'
 		},
 		name: {
