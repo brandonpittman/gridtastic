@@ -3,11 +3,11 @@
 'use strict';
 
 const meow = require('meow');
-const gridsomeHelpers = require('.');
+const gridtastic = require('.');
 
 const cli = meow(`
 Usage
-    $ gridsome-helpers
+    $ gridtastic
 
     init --repo REPO --dest DEST                Download Gridsome starter
     override --html --vue                       Override App.vue and/or index.html
@@ -53,4 +53,4 @@ Usage
 	}
 });
 
-gridsomeHelpers(cli);
+gridtastic(cli);

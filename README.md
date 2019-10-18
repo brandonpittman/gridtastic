@@ -1,18 +1,21 @@
-# gridsome-helpers
+# Gridtastic
 
 A suite of helpers to augment the Gridsome CLI.
 
 ## Usage
 ```sh
-  Usage
-    $ gridsome-helpers
+  $ gridtastic init|override|scaffold|fresh
 
-    init REPO DEST                              Download Gridsome starter REPO to DEST
-    override html|vue                           Override filetype
-    scaffold -t TYPE -n NAME                    Scaffold out a new file
+    init --repo REPO --dest DEST                Download Gridsome starter
+    override --html --vue                       Override App.vue and/or index.html
+    scaffold --type TYPE --name NAME            Scaffold out a new file
     fresh                                       Delete Gridsome boilerplate pages and folder-specific README.md files
 
   Options 
+    --repo                                      GITHUB_USER/REPO_NAME
+    --dest                                      Folder to clone Gridsome starter project to
+    --html                                      Denotes index.html
+    --vue                                       Denotes App.vue
     --type, -t  Page|Template|Layout|Component  Filetype to be scaffolded
     --name, -n  SomeFilename                    Filename to be used (will be pascal cased by CLI)
     --help, -h                                  Show help
@@ -21,5 +24,5 @@ A suite of helpers to augment the Gridsome CLI.
 ## Examples
 
 ```sh
-gridsome-helpers scaffold -t component -n some-component  # creates ./src/components/SomeComponent.vue
+gridtastic scaffold -t component -n some-component  # creates ./src/components/SomeComponent.vue
 ```
