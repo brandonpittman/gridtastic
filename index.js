@@ -3,9 +3,11 @@ const override = require('./lib/override');
 const scaffold = require('./lib/scaffold');
 const fresh = require('./lib/fresh');
 const pascalcase = require('pascalcase');
+const degit = require('./lib/degit');
 
 module.exports = ({input, flags, showHelp}) => {
 	const COMMANDS = [
+		'init',
 		'scaffold',
 		'override',
 		'fresh'
@@ -24,6 +26,9 @@ module.exports = ({input, flags, showHelp}) => {
 	}
 
 	switch (COMMAND) {
+		case 'init':
+			degit(input[1], input[2]);
+			break;
 		case 'scaffold':
 			scaffold(
 				pascalcase(flags.type),
