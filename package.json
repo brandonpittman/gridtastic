@@ -1,10 +1,10 @@
 {
-  "name": "griddle",
+  "name": "gridtastic",
   "version": "0.1.9",
   "description": "A suite of helpers to augment the Gridsome CLI.",
   "main": "index.js",
   "bin": {
-    "griddle": "./cli.js"
+    "gridtastic": "./cli.js"
   },
   "dependencies": {
     "chalk": "^2.4.2",
