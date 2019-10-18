@@ -27,7 +27,8 @@ module.exports = ({input, flags, showHelp}) => {
 
 	switch (COMMAND) {
 		case 'init':
-			degit(input[1], input[2]);
+			var {repo, dest} = flags;
+			degit({repo, dest});
 			break;
 		case 'scaffold':
 			scaffold(

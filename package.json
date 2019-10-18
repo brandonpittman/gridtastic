@@ -1,16 +1,15 @@
 {
-  "name": "gridsome-helpers",
+  "name": "griddle",
   "version": "0.1.9",
   "description": "A suite of helpers to augment the Gridsome CLI.",
   "main": "index.js",
   "bin": {
-    "gridsome-helpers": "./cli.js"
+    "griddle": "./cli.js"
   },
   "dependencies": {
     "chalk": "^2.4.2",
     "degit": "^2.1.4",
     "del": "^5.1.0",
-    "execa": "^3.2.0",
     "meow": "^5.0.0",
     "pascalcase": "^1.0.0"
   },

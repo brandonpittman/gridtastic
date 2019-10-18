@@ -9,7 +9,7 @@ const cli = meow(`
 Usage
     $ gridsome-helpers
 
-    init REPO DEST                              Download Gridsome starter REPO to DEST
+    init                                        Download Gridsome starter
     override html|vue                           Override filetype
     scaffold -t TYPE -n NAME                    Scaffold out a new file
     fresh                                       Delete Gridsome boilerplate pages and folder-specific README.md files
@@ -23,6 +23,14 @@ Usage
 		help: {
 			alias: 'h',
 			type: 'boolean'
+		},
+		repo: {
+			type: 'string',
+			alias: 'r'
+		},
+		dest: {
+			type: 'string',
+			alias: 'd'
 		},
 		type: {
 			type: 'string',
