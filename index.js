@@ -15,7 +15,9 @@ module.exports = ({input, flags, showHelp}) => {
 
 	const COMMAND = input[0];
 
-	if (!COMMANDS.includes(COMMAND)) {
+	if (!COMMAND) {
+		showHelp();
+	} else if (!COMMANDS.includes(COMMAND)) {
 		console.log(chalk.bold.red(`\n${COMMAND} is not a recognized command.\n`));
 		console.log(chalk.underline('Available commands:'));
 		for (let command of COMMANDS) {
@@ -30,6 +32,7 @@ module.exports = ({input, flags, showHelp}) => {
 			var {repo, dest} = flags;
 			degit({repo, dest});
 			break;
+
 		case 'scaffold':
 			scaffold(
 				pascalcase(flags.type),
@@ -38,7 +41,8 @@ module.exports = ({input, flags, showHelp}) => {
 			break;
 
 		case 'override':
-			override(input[1]);
+			var {html, vue} = flags;
+			override({html, vue});
 			break;
 
 		case 'fresh':
