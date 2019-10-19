@@ -2,7 +2,14 @@
 
 A suite of helpers to augment the Gridsome CLI.
 
+
+## Install
+
+`npm install -g gridtastic`
+
+
 ## Usage
+
 ```sh
   $ gridtastic
 
