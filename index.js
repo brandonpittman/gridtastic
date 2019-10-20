@@ -1,10 +1,15 @@
 const chalk = require('chalk');
+const packageJSON = require('./package.json');
 const override = require('./lib/override');
 const scaffold = require('./lib/scaffold');
 const fresh = require('./lib/fresh');
 const degit = require('./lib/degit');
 
 module.exports = ({input, flags, showHelp}) => {
+	if (flags.version) {
+		console.log(packageJSON.version);
+	}
+
 	const COMMANDS = [
 		'init',
 		'scaffold',
@@ -19,7 +24,7 @@ module.exports = ({input, flags, showHelp}) => {
 	} else if (!COMMANDS.includes(COMMAND)) {
 		console.log(chalk.bold.red(`\n${COMMAND} is not a recognized command.\n`));
 		console.log(chalk.underline('Available commands:'));
-		for (let command of COMMANDS) {
+		for (const command of COMMANDS) {
 			console.log(`${command}`);
 		}
 
@@ -49,3 +54,4 @@ module.exports = ({input, flags, showHelp}) => {
 			showHelp();
 	}
 };
+

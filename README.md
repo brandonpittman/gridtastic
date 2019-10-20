@@ -11,7 +11,7 @@ A suite of helpers to augment the Gridsome CLI.
 ## Usage
 
 ```sh
-  $ gridtastic
+    $ gridtastic
 
     init --repo REPO --dest DEST     Download Gridsome starter
     override --html --vue            Override App.vue and/or index.html
@@ -28,6 +28,7 @@ A suite of helpers to augment the Gridsome CLI.
     --component, -c                  /components
     --layout, -l                     /layouts
     --name, -n  SomeFilename         Filename to be used (will be pascal cased by CLI)
+    --version, -v                    Show version
     --help, -h                       Show help
 ```
 

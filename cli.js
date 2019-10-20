@@ -24,9 +24,14 @@ Usage
     --component, -c                  /components
     --layout, -l                     /layouts
     --name, -n  SomeFilename         Filename to be used (will be pascal cased by CLI)
+    --version, -v                    Show version
     --help, -h                       Show help
 `, {
 	flags: {
+		version: {
+			alias: 'v',
+			type: 'boolean'
+		},
 		help: {
 			alias: 'h',
 			type: 'boolean'
