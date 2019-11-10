@@ -3,7 +3,7 @@
 'use strict';
 
 const meow = require('meow');
-const gridtastic = require('.');
+const gridtastic = require('./dist');
 
 const cli = meow(`
 Usage
