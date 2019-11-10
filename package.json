@@ -2,7 +2,7 @@
   "name": "gridtastic",
   "version": "0.2.6",
   "description": "A suite of helpers to augment the Gridsome CLI.",
-  "main": "dist/main/index.js",
+  "main": "dist/main",
   "bin": {
     "gridtastic": "cli.js"
   },
@@ -14,11 +14,11 @@
     "pascalcase": "^1.0.0"
   },
   "files": [
-    "dist/main/index.js",
-    "cli.js"
+    "dist"
   ],
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",
+    "concurrently": "^5.0.0",
     "eslint": "^6.5.1",
     "eslint-config-xo": "^0.27.1",
     "xo": "^0.25.3"
