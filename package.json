@@ -2,7 +2,7 @@
   "name": "gridtastic",
   "version": "0.2.6",
   "description": "A suite of helpers to augment the Gridsome CLI.",
-  "main": "dist/index.js",
+  "main": "dist/main/index.js",
   "bin": {
     "gridtastic": "cli.js"
   },
@@ -14,7 +14,7 @@
     "pascalcase": "^1.0.0"
   },
   "files": [
-    "dist/index.js",
+    "dist/main/index.js",
     "cli.js"
   ],
   "devDependencies": {
@@ -31,7 +31,7 @@
   "author": "Brandon Pittman",
   "license": "MIT",
   "scripts": {
-    "build": "ncc build index.ts"
+    "build": "ncc build main.ts -o dist/main"
   },
   "directories": {
     "lib": "lib",
