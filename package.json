@@ -2,9 +2,9 @@
   "name": "gridtastic",
   "version": "0.2.4",
   "description": "A suite of helpers to augment the Gridsome CLI.",
-  "main": "dist/index.js",
+  "main": "index.js",
   "bin": {
-    "gridtastic": "./cli.js"
+    "gridtastic": "cli.js"
   },
   "dependencies": {
     "chalk": "^2.4.2",
