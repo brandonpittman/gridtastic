@@ -2,8 +2,8 @@
 
 'use strict';
 
-const meow = require('meow')
-const gridtastic = require('./dist/main/index.js');
+const meow = require('meow');
+const gridtastic = require('./main.js');
 
 const cli = meow(`
 Usage
