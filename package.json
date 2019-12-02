@@ -7,15 +7,15 @@
     "gridtastic": "cli.js"
   },
   "dependencies": {
-    "chalk": "^2.4.2",
-    "degit": "^2.1.4",
+    "chalk": "^3.0.0",
+    "degit": "^2.2.2",
     "del": "^5.1.0",
     "meow": "^5.0.0",
     "pascalcase": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.5.1",
-    "eslint-config-xo": "^0.27.1",
+    "eslint": "^6.7.2",
+    "eslint-config-xo": "^0.27.2",
     "xo": "^0.25.3"
   },
   "keywords": [
