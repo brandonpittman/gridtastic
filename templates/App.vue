@@ -3,14 +3,12 @@
 </template>
 
 <static-query>
-	query App {
-	metadata {
-	siteName
-	siteDescription
-
-	}
-
-	}
+query App {
+  metadata {
+    siteName
+    siteDescription
+  }
+}
 </static-query>
 
 <script>
@@ -25,11 +23,8 @@ export default {
 					content: this.$static.metadata.siteDescription
 
 				}
-
 			]
-
 		}
-
 	}
-
 }
+</script>
