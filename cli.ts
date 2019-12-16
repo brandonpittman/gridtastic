@@ -2,10 +2,10 @@
 
 'use strict';
 
-const packageJSON = require('./package.json');
-const chalk = require('chalk');
-const arg = require('arg');
-const gridtastic = require('./main.js');
+var packageJSON = require('./package.json');
+var chalk = require('chalk');
+var arg = require('arg');
+var gridtastic = require('./main.ts');
 
 const help = chalk`
   ${packageJSON.description}

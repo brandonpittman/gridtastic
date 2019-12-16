@@ -2,13 +2,13 @@
   "name": "gridtastic",
   "version": "0.2.11",
   "description": "A suite of helpers to augment the Gridsome CLI.",
-  "main": "main.js",
+  "main": "./dist/main",
   "bin": {
-    "gridtastic": "./dist/index.js"
+    "gridtastic": "./dist/cli"
   },
   "scripts": {
-    "build:cli": "ncc build cli.js -o dist/cli -m",
-    "build:main": "ncc build main.js -o dist/main -m",
+    "build:cli": "ncc build cli.ts -o dist/cli -m",
+    "build:main": "ncc build main.ts -o dist/main -m",
     "build": "concurrently 'npm:build:cli' 'npm:build:main'"
   },
   "dependencies": {

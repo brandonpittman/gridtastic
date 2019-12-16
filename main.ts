@@ -1,9 +1,9 @@
-const chalk = require('chalk');
-const packageJSON = require('./package.json');
-const override = require('./lib/override');
-const scaffold = require('./lib/scaffold');
-const fresh = require('./lib/fresh');
-const degit = require('./lib/degit');
+var chalk = require('chalk');
+var packageJSON = require('./package.json');
+var override = require('./lib/override');
+var scaffold = require('./lib/scaffold');
+var fresh = require('./lib/fresh');
+var degit = require('./lib/degit');
 
 module.exports = ({args, help}) => {
 	if (args['--version']) {
