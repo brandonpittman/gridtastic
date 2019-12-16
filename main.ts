@@ -4,10 +4,11 @@ var override = require('./lib/override');
 var scaffold = require('./lib/scaffold');
 var fresh = require('./lib/fresh');
 var degit = require('./lib/degit');
+import {log} from 'console';
 
-module.exports = ({args, help}) => {
+export default function ({args, help}) {
 	if (args['--version']) {
-		console.log(packageJSON.version);
+		log(packageJSON.version);
 	}
 
 	const COMMANDS = [
@@ -20,15 +21,8 @@ module.exports = ({args, help}) => {
 	const COMMAND = args._[0];
 
 	if (!COMMAND) {
-		console.log(help);
-	} else if (!COMMANDS.includes(COMMAND)) {
-		console.log(chalk.bold.red(`\n${COMMAND} is not a recognized command.\n`));
-		console.log(chalk.underline('Available commands:'));
-		for (const command of COMMANDS) {
-			console.log(`${command}`);
-		}
-
-		process.exit(126);
+		log(help);
+		return;
 	}
 
 	switch (COMMAND) {
@@ -49,7 +43,13 @@ module.exports = ({args, help}) => {
 			break;
 
 		default:
-    // Console.log(help);
+			log(chalk.bold.red(`\n${COMMAND} is not a recognized command.\n`));
+			log(chalk.underline('Available commands:'));
+			for (const command of COMMANDS) {
+				log(`${command}`);
+			}
+
+			process.exit(126);
 	}
-};
+}
 

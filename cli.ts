@@ -2,13 +2,13 @@
 
 'use strict';
 
-var packageJSON = require('./package.json');
-var chalk = require('chalk');
-var arg = require('arg');
-var gridtastic = require('./main.ts');
+import chalk from 'chalk';
+import arg from 'arg';
+import {description} from './package.json';
+import gridtastic from './main';
 
 const help = chalk`
-  ${packageJSON.description}
+  ${description}
 
   {bold Usage}
     {dim $} {bold gridtastic}
@@ -43,7 +43,10 @@ const args = arg({
 	'--layout': Boolean,
 	'--name': String,
 	'--version': Boolean,
-	'--help': Boolean
+	'--help': Boolean,
+	'-h': '--help',
+	'-v': '--version',
+	'-n': '--name'
 });
 
 gridtastic({help, args});
