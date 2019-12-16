@@ -5,8 +5,8 @@ const scaffold = require('./lib/scaffold');
 const fresh = require('./lib/fresh');
 const degit = require('./lib/degit');
 
-module.exports = ({input, flags, showHelp}) => {
-	if (flags.version) {
+module.exports = ({args, help}) => {
+	if (args['--version']) {
 		console.log(packageJSON.version);
 	}
 
@@ -17,10 +17,10 @@ module.exports = ({input, flags, showHelp}) => {
 		'fresh'
 	];
 
-	const COMMAND = input[0];
+	const COMMAND = args._[0];
 
 	if (!COMMAND) {
-		showHelp();
+		console.log(help);
 	} else if (!COMMANDS.includes(COMMAND)) {
 		console.log(chalk.bold.red(`\n${COMMAND} is not a recognized command.\n`));
 		console.log(chalk.underline('Available commands:'));
@@ -33,17 +33,15 @@ module.exports = ({input, flags, showHelp}) => {
 
 	switch (COMMAND) {
 		case 'init':
-			var {repo, dest} = flags;
-			degit({repo, dest});
+			degit(args);
 			break;
 
 		case 'scaffold':
-			scaffold(flags);
+			scaffold(args);
 			break;
 
 		case 'override':
-			var {html, vue} = flags;
-			override({html, vue});
+			override(args);
 			break;
 
 		case 'fresh':
@@ -51,7 +49,7 @@ module.exports = ({input, flags, showHelp}) => {
 			break;
 
 		default:
-			showHelp();
+    // Console.log(help);
 	}
 };
 

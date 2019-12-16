@@ -2,19 +2,23 @@
 
 'use strict';
 
-const meow = require('meow');
+const packageJSON = require('./package.json');
+const chalk = require('chalk');
+const arg = require('arg');
 const gridtastic = require('./main.js');
 
-const cli = meow(`
-Usage
-    $ gridtastic
+const help = chalk`
+  ${packageJSON.description}
+
+  {bold Usage}
+    {dim $} {bold gridtastic}
 
     init --repo REPO --dest DEST     Download Gridsome starter
     override --html --vue            Override App.vue and/or index.html
     scaffold --TYPE --name NAME      Scaffold out a new file
     fresh                            Delete Gridsome boilerplate pages and folder-specific README.md files
 
-  Options 
+  {bold Options}
     --repo, -r                       GITHUB_USER/REPO_NAME
     --dest, -d                       Folder to clone Gridsome starter project to
     --html                           Denotes index.html
@@ -26,51 +30,20 @@ Usage
     --name, -n  SomeFilename         Filename to be used (will be pascal cased by CLI)
     --version, -v                    Show version
     --help, -h                       Show help
-`, {
-	flags: {
-		version: {
-			alias: 'v',
-			type: 'boolean'
-		},
-		help: {
-			alias: 'h',
-			type: 'boolean'
-		},
-		vue: {
-			type: 'boolean'
-		},
-		html: {
-			type: 'boolean'
-		},
-		repo: {
-			type: 'string',
-			alias: 'r'
-		},
-		dest: {
-			type: 'string',
-			alias: 'd'
-		},
-		component: {
-			type: 'boolean',
-			alias: 'c'
-		},
-		page: {
-			type: 'boolean',
-			alias: 'p'
-		},
-		layout: {
-			type: 'boolean',
-			alias: 'l'
-		},
-		template: {
-			type: 'boolean',
-			alias: 't'
-		},
-		name: {
-			type: 'string',
-			alias: 'n'
-		}
-	}
+`;
+
+const args = arg({
+	'--repo': String,
+	'--dest': String,
+	'--html': Boolean,
+	'--vue': Boolean,
+	'--template': Boolean,
+	'--page': Boolean,
+	'--component': Boolean,
+	'--layout': Boolean,
+	'--name': String,
+	'--version': Boolean,
+	'--help': Boolean
 });
 
-gridtastic(cli);
+gridtastic({help, args});

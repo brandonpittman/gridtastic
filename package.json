@@ -4,9 +4,15 @@
   "description": "A suite of helpers to augment the Gridsome CLI.",
   "main": "main.js",
   "bin": {
-    "gridtastic": "cli.js"
+    "gridtastic": "./dist/index.js"
+  },
+  "scripts": {
+    "build:cli": "ncc build cli.js -o dist/cli -m",
+    "build:main": "ncc build main.js -o dist/main -m",
+    "build": "concurrently 'npm:build:cli' 'npm:build:main'"
   },
   "dependencies": {
+    "arg": "^4.1.2",
     "chalk": "^3.0.0",
     "degit": "^2.2.2",
     "del": "^5.1.0",
@@ -14,6 +20,7 @@
     "pascalcase": "^1.0.0"
   },
   "devDependencies": {
+    "concurrently": "^5.0.1",
     "eslint": "^6.7.2",
     "eslint-config-xo": "^0.27.2",
     "xo": "^0.25.3"
