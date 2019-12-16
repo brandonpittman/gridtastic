@@ -1,9 +1,9 @@
-var fs = require('fs');
-var chalk = require('chalk');
-var {log} = console;
-var isGridsomeProject = require('./isGridsomeProject');
+import fs from 'fs';
+import chalk from 'chalk';
+import {log} from 'console';
+import isGridsomeProject from './isGridsomeProject';
 
-module.exports = ({
+export default ({
 	'--html': html = false,
 	'--vue': vue = false
 } = {}) => {

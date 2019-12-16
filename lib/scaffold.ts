@@ -1,11 +1,11 @@
-var fs = require('fs');
-var {log} = require('console');
-var chalk = require('chalk');
-var pascalcase = require('pascalcase');
-var isGridsomeProject = require('./isGridsomeProject');
+import fs from 'fs';
+import {log} from 'console';
+import chalk from 'chalk';
+import pascalcase from 'pascalcase';
+import isGridsomeProject from './isGridsomeProject';
 
-module.exports = ({
-	'--name': name,
+export default ({
+	'--name': name = null,
 	'--component': component = false,
 	'--template': template = false,
 	'--page': page = false,

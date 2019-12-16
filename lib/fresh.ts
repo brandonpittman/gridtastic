@@ -1,9 +1,9 @@
-var del = require('del');
-var chalk = require('chalk');
-var scaffold = require('./scaffold');
-var isGridsomeProject = require('./isGridsomeProject');
+import del from 'del';
+import chalk from 'chalk';
+import scaffold from './scaffold';
+import isGridsomeProject from './isGridsomeProject';
 
-module.exports = async () => {
+export default async () => {
 	isGridsomeProject();
 
 	const deletedPaths = await del([
@@ -19,6 +19,13 @@ module.exports = async () => {
 		console.log(chalk.yellow('No files to delete.'));
 	}
 
-	scaffold({layout: true, name: 'Default'});
-	scaffold({page: true, name: 'Index'});
+	scaffold({
+		'--layout': true,
+		'--name': 'Default'
+	});
+
+	scaffold({
+		'--page': true,
+		'--name': 'Index'
+	});
 };

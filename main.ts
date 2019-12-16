@@ -1,14 +1,14 @@
-var chalk = require('chalk');
-var packageJSON = require('./package.json');
-var override = require('./lib/override');
-var scaffold = require('./lib/scaffold');
-var fresh = require('./lib/fresh');
-var degit = require('./lib/degit');
+import chalk from 'chalk';
+import {version} from './package.json';
+import override from './lib/override';
+import scaffold from './lib/scaffold';
+import fresh from './lib/fresh';
+import degit from './lib/degit';
 import {log} from 'console';
 
 export default function ({args, help}) {
 	if (args['--version']) {
-		log(packageJSON.version);
+		log(version);
 	}
 
 	const COMMANDS = [
@@ -52,4 +52,3 @@ export default function ({args, help}) {
 			process.exit(126);
 	}
 }
-
