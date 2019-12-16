@@ -1,10 +1,11 @@
 import fs from 'fs';
+import pkgDir from 'pkg-dir';
 import {log} from 'console';
 import chalk from 'chalk';
 import pascalcase from 'pascalcase';
 import isGridsomeProject from './isGridsomeProject';
 
-export default ({
+export default async ({
 	'--name': name = null,
 	'--component': component = false,
 	'--template': template = false,
@@ -30,6 +31,8 @@ export default ({
 		layout
 	};
 
+	const pkgRoot = await pkgDir(__dirname);
+
 	for (let [type, value] of Object.entries(lookupTable)) {
 		if (value) {
 			let filename = pascalcase(name);
@@ -37,7 +40,7 @@ export default ({
 				log(chalk.red(`${filename}.vue already exists!`));
 				process.exit(126);
 			} else {
-				fs.copyFileSync(`${__dirname}/../templates/${type}.vue`, `./src/${type}s/${filename}.vue`);
+				fs.copyFileSync(`${pkgRoot}/templates/${type}.vue`, `./src/${type}s/${filename}.vue`);
 				log(chalk.green(`src/${type}s/${filename}.vue created successfully.`));
 			}
 		}

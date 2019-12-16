@@ -2,8 +2,9 @@ import fs from 'fs';
 import chalk from 'chalk';
 import {log} from 'console';
 import isGridsomeProject from './isGridsomeProject';
+import pkgDir from 'pkg-dir';
 
-export default ({
+export default async ({
 	'--html': html = false,
 	'--vue': vue = false
 } = {}) => {
@@ -19,11 +20,13 @@ export default ({
 		process.exit(126);
 	}
 
+	const pkgRoot = await pkgDir(__dirname);
+
 	if (html) {
 		if (fs.existsSync('./src/index.html')) {
 			log(chalk.red('index.html already exists!'));
 		} else {
-			fs.copyFileSync(`${__dirname}/../templates/index.html`, './src/index.html');
+			fs.copyFileSync(`${pkgRoot}/templates/index.html`, './src/index.html');
 			log(chalk.green('index.html created successfully.'));
 		}
 	}
@@ -32,7 +35,7 @@ export default ({
 		if (fs.existsSync('./src/App.vue')) {
 			log(chalk.red('App.vue already exists!'));
 		} else {
-			fs.copyFileSync(`${__dirname}/../templates/App.vue`, './src/App.vue');
+			fs.copyFileSync(`${pkgRoot}/templates/App.vue`, './src/App.vue');
 			log(chalk.green('App.vue created successfully.'));
 		}
 	}
