@@ -44,9 +44,11 @@ const args = arg({
 	'--name': String,
 	'--version': Boolean,
 	'--help': Boolean,
+	'--debug': Boolean,
 	'-h': '--help',
 	'-v': '--version',
-	'-n': '--name'
+	'-n': '--name',
+	'-d': '--debug'
 });
 
 gridtastic({help, args});

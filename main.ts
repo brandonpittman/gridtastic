@@ -5,6 +5,14 @@ import scaffold from './lib/scaffold';
 import fresh from './lib/fresh';
 import degit from './lib/degit';
 import {log} from 'console';
+import Conf from 'conf';
+
+var config = new Conf();
+
+function setDefault() {
+	config.set('githubUser', 'brandonpittman');
+	config.set('githubRepo', 'gridsome-starter-default');
+}
 
 export default function ({args, help}) {
 	if (args['--version']) {
@@ -21,6 +29,14 @@ export default function ({args, help}) {
 	const COMMAND = args._[0];
 
 	if (!COMMAND) {
+		if (args['--debug']) {
+			setDefault();
+			log(config.path);
+			log(config.get('githubRepo'));
+			log(config.get('githubUser'));
+			return;
+		}
+
 		log(help);
 		return;
 	}

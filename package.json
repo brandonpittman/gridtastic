@@ -14,6 +14,7 @@
   "dependencies": {
     "arg": "^4.1.2",
     "chalk": "^3.0.0",
+    "conf": "^6.2.0",
     "degit": "^2.2.2",
     "del": "^5.1.0",
     "pascalcase": "^1.0.0",
