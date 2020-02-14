@@ -33,25 +33,25 @@ const help = chalk`
 `;
 
 const args = arg({
-  '--repo': String,
-  '--dest': String,
-  '--html': Boolean,
-  '--vue': Boolean,
-  '--template': Boolean,
-  '--page': Boolean,
-  '--component': Boolean,
-  '--layout': Boolean,
-  '--name': String,
-  '--version': Boolean,
-  '--help': Boolean,
-  '-c': '--component',
-  '-p': '--page',
-  '-t': '--template',
-  '-l': '--layout',
-  '-h': '--help',
-  '-v': '--version',
-  '-n': '--name',
-  '-d': '--debug'
+	'--repo': String,
+	'--dest': String,
+	'--html': Boolean,
+	'--vue': Boolean,
+	'--template': Boolean,
+	'--page': Boolean,
+	'--component': Boolean,
+	'--layout': Boolean,
+	'--name': String,
+	'--version': Boolean,
+	'--help': Boolean,
+	'-c': '--component',
+	'-p': '--page',
+	'-t': '--template',
+	'-l': '--layout',
+	'-h': '--help',
+	'-v': '--version',
+	'-n': '--name',
+	'-d': '--debug'
 });
 
 gridtastic({help, args});
