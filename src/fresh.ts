@@ -20,12 +20,12 @@ export default async () => {
 	}
 
 	scaffold({
-		layout: true,
-		name: 'Default'
+		'--layout': true,
+		'--name': 'Default'
 	});
 
 	scaffold({
-		page: true,
-		name: 'Index'
+		'--page': true,
+		'--name': 'Index'
 	});
 };

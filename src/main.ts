@@ -26,6 +26,7 @@ export default function ({help, args}) {
 	const command = commands[args._[0]];
 
 	if (command) {
+		console.log(args);
 		command(args);
 	}
 }
