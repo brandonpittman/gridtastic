@@ -2,26 +2,32 @@
   "name": "gridtastic",
   "version": "0.2.19",
   "description": "A suite of helpers to augment the Gridsome CLI.",
-  "source": "./cli.ts",
+  "source": "./src/cli.ts",
   "bin": {
     "gridtastic": "./dist/index.js"
   },
   "scripts": {
-    "build": "del dist && ncc build cli.ts -o dist"
+    "test": "xo --fix",
+    "clean": "del dist",
+    "build": "npm run clean && ncc build src/cli.ts -o dist"
   },
   "dependencies": {
     "args": "^5.0.1",
     "chalk": "^3.0.0",
     "degit": "^2.2.2",
-    "del": "^5.1.0",
     "pascalcase": "^1.0.0",
     "pkg-dir": "^4.2.0",
     "typescript": "^3.7.5"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
     "@zeit/ncc": "^0.21.1",
     "concurrently": "^5.0.1",
-    "eslint": "^6.7.2"
+    "del-cli": "^3.0.0",
+    "eslint": "^6.7.2",
+    "eslint-config-xo": "^0.29.0",
+    "eslint-config-xo-typescript": "^0.26.0"
   },
   "keywords": [
     "gridsome",
