@@ -6,7 +6,6 @@
     "gridtastic": "./dist/index.js"
   },
   "scripts": {
-    "prepublish": "npm run build",
     "build": "npm run test && npm run clean && ncc build src/cli.ts -o dist -m",
     "clean": "del dist",
     "test": "xo --fix"
