@@ -2,8 +2,8 @@ import degit from 'degit';
 import chalk from 'chalk';
 
 export default ({
-	'--repo': repo = 'brandonpittman/gridsome-starter-default',
-	'--dest': dest = 'gridsome-starter-default'
+	repo = 'brandonpittman/gridsome-starter-default',
+	dest = 'gridsome-starter-default'
 } = {}) => {
 	let emitter = degit(repo, {
 		cache: false,

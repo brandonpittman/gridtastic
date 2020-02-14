@@ -1,54 +1,24 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
-'use strict';
+import args from 'args';
+import degit from './lib/degit';
+import fresh from './lib/fresh';
+import scaffold from './lib/scaffold';
+import override from './lib/override';
 
-import chalk from 'chalk';
-import arg from 'arg';
-import {description} from './package.json';
-import gridtastic from './main';
+args
+	.command('init', 'Clone a starter Gridsome project', (name, sub, options) => degit(options))
+	.command('scaffold', 'Scaffold a new component', (name, sub, options) => scaffold(options))
+	.command('override', 'Override default index.html and/or App.vue', (name, sub, options) => override(options))
+	.command('fresh', 'Delete unnecessary starter files', fresh)
+	.option('dest', 'The directory to clone into', 'gridsome-starter-default')
+	.option('html', 'Override index.html', false)
+	.option('vue', 'Override App.vue', false)
+	.option('page', '/pages')
+	.option('component', '/components')
+	.option('layout', '/layouts')
+	.option('template', '/templates')
+	.option('name', 'Name of component to scaffold')
+	.option('repo', 'The name of the GitHub repository to clone', 'brandonpittman/gridsome-starter-default');
 
-const help = chalk`
-  ${description}
-
-  {bold Usage}
-    {dim $} {bold gridtastic}
-
-    init --repo REPO --dest DEST     Download Gridsome starter
-    override --html --vue            Override App.vue and/or index.html
-    scaffold --TYPE --name NAME      Scaffold out a new file
-    fresh                            Delete Gridsome boilerplate pages and folder-specific README.md files
-
-  {bold Options}
-    --repo, -r                       GITHUB_USER/REPO_NAME
-    --dest, -d                       Folder to clone Gridsome starter project to
-    --html                           Denotes index.html
-    --vue                            Denotes App.vue
-    --template, -t                   /templates
-    --page, -p                       /pages
-    --component, -c                  /components
-    --layout, -l                     /layouts
-    --name, -n  SomeFilename         Filename to be used (will be pascal cased by CLI)
-    --version, -v                    Show version
-    --help, -h                       Show help
-`;
-
-const args = arg({
-	'--repo': String,
-	'--dest': String,
-	'--html': Boolean,
-	'--vue': Boolean,
-	'--template': Boolean,
-	'--page': Boolean,
-	'--component': Boolean,
-	'--layout': Boolean,
-	'--name': String,
-	'--version': Boolean,
-	'--help': Boolean,
-	'--debug': Boolean,
-	'-h': '--help',
-	'-v': '--version',
-	'-n': '--name',
-	'-d': '--debug'
-});
-
-gridtastic({help, args});
+args.parse(process.argv, {name: 'gridtastic'});

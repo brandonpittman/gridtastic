@@ -5,8 +5,8 @@ import isGridsomeProject from './isGridsomeProject';
 import pkgDir from 'pkg-dir';
 
 export default async ({
-	'--html': html = false,
-	'--vue': vue = false
+	html = false,
+	vue = false
 } = {}) => {
 	isGridsomeProject();
 

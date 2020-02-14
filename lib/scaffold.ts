@@ -6,11 +6,11 @@ import pascalcase from 'pascalcase';
 import isGridsomeProject from './isGridsomeProject';
 
 export default async ({
-	'--name': name = null,
-	'--component': component = false,
-	'--template': template = false,
-	'--page': page = false,
-	'--layout': layout = false
+	name = null,
+	component = false,
+	template = false,
+	page = false,
+	layout = false
 } = {}) => {
 	isGridsomeProject();
 
