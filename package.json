@@ -6,7 +6,10 @@
     "gridtastic": "./dist/index.js"
   },
   "scripts": {
-    "build": "ncc build cli.ts -o dist/cli -m"
+    "prepublish": "npm run build",
+    "build": "npm run test && npm run clean && ncc build src/cli.ts -o dist -m",
+    "clean": "del dist",
+    "test": "xo --fix"
   },
   "dependencies": {
     "arg": "^4.1.3",
@@ -17,10 +20,15 @@
     "pkg-dir": "^4.2.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
     "@zeit/ncc": "^0.21.1",
     "concurrently": "^5.1.0",
+    "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
-    "eslint-config-xo": "^0.29.0"
+    "eslint-config-xo": "^0.29.0",
+    "eslint-config-xo-typescript": "^0.26.0",
+    "typescript": "^3.7.5"
   },
   "keywords": [
     "gridsome",

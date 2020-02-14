@@ -4,7 +4,7 @@ module.exports = {
     "es6": true,
     "node": true
   },
-  "extends": ["xo"],
+  "extends": ["xo", "xo-typescript"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"

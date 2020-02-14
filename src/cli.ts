@@ -4,7 +4,7 @@
 
 import chalk from 'chalk';
 import arg from 'arg';
-import {description} from './package.json';
+import {description} from '../package.json';
 import gridtastic from './main';
 
 const help = chalk`
@@ -33,21 +33,21 @@ const help = chalk`
 `;
 
 const args = arg({
-  '--repo': String,
-  '--dest': String,
-  '--html': Boolean,
-  '--vue': Boolean,
-  '--template': Boolean,
-  '--page': Boolean,
-  '--component': Boolean,
-  '--layout': Boolean,
-  '--name': String,
-  '--version': Boolean,
-  '--help': Boolean,
-  '-h': '--help',
-  '-v': '--version',
-  '-n': '--name',
-  '-d': '--debug'
+	'--repo': String,
+	'--dest': String,
+	'--html': Boolean,
+	'--vue': Boolean,
+	'--template': Boolean,
+	'--page': Boolean,
+	'--component': Boolean,
+	'--layout': Boolean,
+	'--name': String,
+	'--version': Boolean,
+	'--help': Boolean,
+	'-h': '--help',
+	'-v': '--version',
+	'-n': '--name',
+	'-d': '--debug'
 });
 
 gridtastic({help, args});
