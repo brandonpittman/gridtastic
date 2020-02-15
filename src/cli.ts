@@ -2,9 +2,10 @@
 
 'use strict';
 
+import {version, description} from '../package.json';
+import {log} from 'console';
 import chalk from 'chalk';
 import arg from 'arg';
-import {description} from '../package.json';
 import gridtastic from './main';
 
 const help = chalk`
@@ -54,4 +55,14 @@ const args = arg({
 	'-d': '--debug'
 });
 
-gridtastic({help, args});
+if (args['--version']) {
+	log(version);
+	process.exit(0);
+}
+
+if (args['--help']) {
+	log(help);
+	process.exit(0);
+}
+
+gridtastic(args);
