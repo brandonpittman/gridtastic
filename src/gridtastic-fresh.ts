@@ -1,6 +1,6 @@
 import del from 'del';
 import chalk from 'chalk';
-import scaffold from './scaffold';
+import scaffold from './gridtastic-scaffold';
 import isGridsomeProject from './isGridsomeProject';
 
 export default async (): Promise<void> => {
@@ -19,13 +19,17 @@ export default async (): Promise<void> => {
 		console.log(chalk.yellow('No files to delete.'));
 	}
 
-	scaffold({
-		'--layout': true,
-		'--name': 'Default'
-	});
+	scaffold(
+		[
+			'--layout',
+			'--name',
+			'Default'
+		]
+	);
 
-	scaffold({
-		'--page': true,
-		'--name': 'Index'
-	});
+	scaffold([
+		'--page',
+		'--name',
+		'Index'
+	]);
 };

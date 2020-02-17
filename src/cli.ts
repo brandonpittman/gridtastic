@@ -4,7 +4,6 @@ import {version, description} from '../package.json';
 import {log} from 'console';
 import chalk from 'chalk';
 import arg from 'arg';
-import gridtastic from './main';
 
 const help = chalk`
 
@@ -33,26 +32,11 @@ const help = chalk`
 `;
 
 const args = arg({
-	'--repo': String,
-	'--dest': String,
-	'--html': Boolean,
-	'--vue': Boolean,
-	'--template': Boolean,
-	'--page': Boolean,
-	'--component': Boolean,
-	'--layout': Boolean,
-	'--name': String,
-	'--version': Boolean,
-	'--help': Boolean,
-	'-l': '--layout',
-	'-c': '--component',
-	'-p': '--page',
-	'-t': '--template',
 	'-h': '--help',
 	'-v': '--version',
-	'-n': '--name',
-	'-d': '--debug'
-});
+	'--version': Boolean,
+	'--help': Boolean
+}, {permissive: true});
 
 if (args['--version']) {
 	log(version);
@@ -64,4 +48,20 @@ if (args['--help']) {
 	process.exit(0);
 }
 
-gridtastic(args);
+let forwardedArgs = args._.slice(1);
+
+const commands = {
+	init: async () => import('./gridtastic-init').then(i => i.default),
+	scaffold: async () => import('./gridtastic-scaffold').then(async i => i.default),
+	override: async () => import('./gridtastic-override').then(async i => i.default),
+	fresh: async () => import('./gridtastic-fresh').then(async i => i.default)
+};
+
+const command = commands[args._[0]];
+
+if (command) {
+	command().then(exec => exec(forwardedArgs));
+} else {
+	console.warn('Command not recognized.\n\nRun gridtastic --help to see available commands.');
+	process.exit(1);
+}

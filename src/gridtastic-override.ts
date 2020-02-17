@@ -3,12 +3,18 @@ import chalk from 'chalk';
 import {log} from 'console';
 import isGridsomeProject from './isGridsomeProject';
 import pkgDir from 'pkg-dir';
+import arg from 'arg';
 
-export default async ({
-	'--html': html = false,
-	'--vue': vue = false
-} = {}): Promise<void> => {
+export default async (argv): Promise<void> => {
 	isGridsomeProject();
+
+	let {
+		'--html': html = false,
+		'--vue': vue = false
+	} = arg({
+		'--html': Boolean,
+		'--vue': Boolean
+	}, {argv});
 
 	if (!fs.existsSync('./src')) {
 		log(chalk.blue('Creating src directory'));
@@ -17,7 +23,7 @@ export default async ({
 
 	if (!(html || vue)) {
 		console.log(chalk.yellow('Please pass --html and/or --vue.'));
-		process.exit(126);
+		process.exit(1);
 	}
 
 	const pkgRoot = await pkgDir(__dirname);
