@@ -25,10 +25,10 @@ export default async ({
 	}
 
 	const lookupTable = {
-		component: 'Component',
-		template: 'Template',
-		page: 'Page',
-		layout: 'Layout'
+		component,
+		template,
+		page,
+		layout
 	};
 
 	const pkgRoot = await pkgDir(__dirname);
@@ -40,7 +40,7 @@ export default async ({
 				log(chalk.red(`${filename}.vue already exists!`));
 				process.exit(126);
 			} else {
-				fs.copyFileSync(`${pkgRoot}/templates/${type}.vue`, `./src/${type}s/${filename}.vue`);
+				fs.copyFileSync(`${pkgRoot}/templates/${pascalcase(type)}.vue`, `./src/${type}s/${filename}.vue`);
 				log(chalk.green(`src/${type}s/${filename}.vue`));
 			}
 		}
