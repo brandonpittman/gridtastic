@@ -1,10 +1,18 @@
 import degit from 'degit';
 import chalk from 'chalk';
+import arg from 'arg';
 
-export default ({
-	'--repo': repo = 'brandonpittman/gridsome-starter-default',
-	'--dest': dest = 'gridsome-starter-default'
-} = {}): void => {
+export default (): void => {
+	const args = arg({
+		'--repo': String,
+		'--dest': String
+	});
+
+	let {
+		'--repo': repo = 'brandonpittman/gridsome-starter-default',
+		'--dest': dest = 'gridsome-starter-default'
+	} = args;
+
 	let emitter = degit(repo, {
 		cache: false,
 		force: true,
