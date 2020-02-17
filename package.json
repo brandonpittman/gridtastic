@@ -13,7 +13,8 @@
     "prepare": "npm run build",
     "clean": "del dist",
     "test": "xo src/*.ts --fix",
-    "build": "del dist && ncc build src/cli.ts -o dist/cli -m"
+    "build": "del dist && ncc build src/cli.ts -o dist/cli -m",
+    "watch": "del dist && ncc build src/cli.ts -o dist/cli -w"
   },
   "dependencies": {
     "arg": "^4.1.3",
