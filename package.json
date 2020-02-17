@@ -3,7 +3,7 @@
   "version": "0.3.7",
   "description": "A suite of helpers to augment the Gridsome CLI.",
   "bin": {
-    "gridtastic": "./dist/cli/index.js"
+    "gridtastic": "dist/cli/index.js"
   },
   "files": [
     "dist/cli/index.js"

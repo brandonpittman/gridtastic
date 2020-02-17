@@ -1,5 +1,6 @@
-node_modules
+node_modules/
 yarn-error.log
 tags
 yarn.lock
+dist/
 package-lock.json
