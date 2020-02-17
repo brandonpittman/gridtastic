@@ -2,12 +2,8 @@
   "name": "gridtastic",
   "version": "0.3.2",
   "description": "A suite of helpers to augment the Gridsome CLI.",
-  "source": "./src/cli.ts",
-  "files": [
-    "./dist/cli/index.js"
-  ],
   "bin": {
-    "gridtastic": "./dist/cli/index.js"
+    "gridtastic": "dist/cli/index.js"
   },
   "scripts": {
     "prepare": "npm run build",
