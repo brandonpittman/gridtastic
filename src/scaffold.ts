@@ -25,10 +25,10 @@ export default async ({
 	}
 
 	const lookupTable = {
-		component,
-		template,
-		page,
-		layout
+		component: 'Component',
+		template: 'Template',
+		page: 'Page',
+		layout: 'Layout'
 	};
 
 	const pkgRoot = await pkgDir(__dirname);
