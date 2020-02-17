@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import scaffold from './scaffold';
 import isGridsomeProject from './isGridsomeProject';
 
-export default async () => {
+export default async (): Promise<void> => {
 	isGridsomeProject();
 
 	const deletedPaths = await del([

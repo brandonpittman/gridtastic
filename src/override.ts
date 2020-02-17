@@ -7,7 +7,7 @@ import pkgDir from 'pkg-dir';
 export default async ({
 	'--html': html = false,
 	'--vue': vue = false
-} = {}) => {
+} = {}): Promise<void> => {
 	isGridsomeProject();
 
 	if (!fs.existsSync('./src')) {

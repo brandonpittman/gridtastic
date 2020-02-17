@@ -11,7 +11,7 @@ export default async ({
 	'--template': template = false,
 	'--page': page = false,
 	'--layout': layout = false
-} = {}) => {
+} = {}): Promise<void> => {
 	isGridsomeProject();
 
 	if (!(component || page || template || layout)) {
@@ -35,12 +35,14 @@ export default async ({
 
 	for (let [type, value] of Object.entries(lookupTable)) {
 		if (value) {
-			let filename = pascalcase(name);
+			let filename: string = pascalcase(name);
+			let pascalType: string = pascalcase(type);
+
 			if (fs.existsSync(`./src/${type}s/${filename}.vue`)) {
 				log(chalk.red(`${filename}.vue already exists!`));
 				process.exit(126);
 			} else {
-				fs.copyFileSync(`${pkgRoot}/templates/${pascalcase(type)}.vue`, `./src/${type}s/${filename}.vue`);
+				fs.copyFileSync(`${pkgRoot}/templates/${pascalType}.vue`, `./src/${type}s/${filename}.vue`);
 				log(chalk.green(`src/${type}s/${filename}.vue`));
 			}
 		}
