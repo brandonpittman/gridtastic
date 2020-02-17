@@ -6,7 +6,7 @@
     "gridtastic": "./dist/cli/index.js"
   },
   "files": [
-    "./dist/cli/index.js"
+    "dist/cli/index.js"
   ],
   "scripts": {
     "clean": "del dist",
