@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+'use strict';
+
 import {version, description} from '../package.json';
 import {log} from 'console';
 import chalk from 'chalk';

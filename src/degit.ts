@@ -4,7 +4,7 @@ import chalk from 'chalk';
 export default ({
 	'--repo': repo = 'brandonpittman/gridsome-starter-default',
 	'--dest': dest = 'gridsome-starter-default'
-} = {}) => {
+} = {}): void => {
 	let emitter = degit(repo, {
 		cache: false,
 		force: true,
