@@ -3,6 +3,9 @@
   "version": "0.3.1",
   "description": "A suite of helpers to augment the Gridsome CLI.",
   "source": "./src/cli.ts",
+  "files": [
+    "./dist/cli/index.js"
+  ],
   "bin": {
     "gridtastic": "./dist/cli/index.js"
   },
