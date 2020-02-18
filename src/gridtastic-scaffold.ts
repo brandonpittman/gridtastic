@@ -6,16 +6,15 @@ import pascalcase from 'pascalcase';
 import isGridsomeProject from './isGridsomeProject';
 import arg from 'arg';
 
-export default async (argv): Promise<void> => {
-	isGridsomeProject();
+// Scaffold --TYPE --name NAME      Scaffold out a new file
+// --template, -t                   /templates
+// --page, -p                       /pages
+// --component, -c                  /components
+// --layout, -l                     /layouts
+// --name, -n  SomeFilename         Filename to be used (will be pascal cased by CLI)
 
-	let {
-		'--name': name = null,
-		'--component': component = false,
-		'--template': template = false,
-		'--page': page = false,
-		'--layout': layout = false
-	} = arg({
+export default async (argv: string[]): Promise<void> => {
+	const args = arg({
 		'--template': Boolean,
 		'--page': Boolean,
 		'--component': Boolean,
@@ -25,8 +24,33 @@ export default async (argv): Promise<void> => {
 		'-c': '--component',
 		'-p': '--page',
 		'-t': '--template',
-		'-n': '--name'
+		'-n': '--name',
+		'--help': Boolean,
+		'-h': '--help'
 	}, {argv});
+
+	if (args['--help']) {
+		console.log(chalk`
+    {bold Description}
+      Creates a new Vue file of page, component, template, or layout types.
+
+    {bold Usage}
+      $ gridtastic scaffold --page --name <name>
+
+    <name> will converted to PascalCase automatically.
+    `);
+		process.exit(0);
+	}
+
+	isGridsomeProject();
+
+	let {
+		'--name': name = null,
+		'--component': component = false,
+		'--template': template = false,
+		'--page': page = false,
+		'--layout': layout = false
+	} = args;
 
 	if (!(component || page || template || layout)) {
 		console.log(chalk.bold.red('Please provide one of the filetype options.'));

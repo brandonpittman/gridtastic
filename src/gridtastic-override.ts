@@ -5,16 +5,31 @@ import isGridsomeProject from './isGridsomeProject';
 import pkgDir from 'pkg-dir';
 import arg from 'arg';
 
-export default async (argv): Promise<void> => {
+export default async (argv: string[]): Promise<void> => {
+	const args = arg({
+		'--html': Boolean,
+		'--vue': Boolean,
+		'--help': Boolean,
+		'-h': '--help'
+	}, {argv});
+
+	if (args['--help']) {
+		console.log(chalk`
+    {bold Description}
+      Creates overrides for App.vue and/or index.html, with boilerplate code.
+
+    {bold Usage}
+      $ gridtastic override --vue --html
+    `);
+		process.exit(0);
+	}
+
 	isGridsomeProject();
 
 	let {
 		'--html': html = false,
 		'--vue': vue = false
-	} = arg({
-		'--html': Boolean,
-		'--vue': Boolean
-	}, {argv});
+	} = args;
 
 	if (!fs.existsSync('./src')) {
 		log(chalk.blue('Creating src directory'));
