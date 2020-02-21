@@ -1,9 +1,28 @@
 #! /usr/bin/env node
 
-import {version} from '../package.json';
 import {log} from 'console';
 import chalk from 'chalk';
 import arg from 'arg';
+import pkg from '../package.json';
+import checkForUpdate from 'update-check';
+
+const updateCheck = async (): Promise<void> => {
+	let update = null;
+
+	try {
+		update = await checkForUpdate(pkg);
+	} catch (err) {
+		let msg: string = err;
+		console.error(`Failed to check for updates: ${msg}`);
+	}
+
+	if (update) {
+		let msg: string = update.latest;
+		console.log(`The latest version is ${msg}. Please update!`);
+	}
+};
+
+updateCheck();
 
 const args = arg({
 	'--version': Boolean,
@@ -22,7 +41,7 @@ const commands = {
 const foundCommand = Boolean(commands[args._[0]]);
 
 if (!foundCommand && args['--version']) {
-	log(version);
+	log(pkg.version);
 	process.exit(0);
 }
 
@@ -41,6 +60,10 @@ if (!foundCommand && args['--help']) {
     For more information run a command with the --help flag
       $ gridtastic scaffold --help
 `);
+	process.exit(0);
+}
+
+if (!foundCommand) {
 	process.exit(0);
 }
 

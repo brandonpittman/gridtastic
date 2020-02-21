@@ -10,7 +10,7 @@
     "templates"
   ],
   "scripts": {
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "clean": "del dist",
     "test": "xo src/*.ts --fix",
     "build": "del dist && ncc build src/cli.ts -o dist/cli -m",
@@ -22,7 +22,8 @@
     "degit": "^2.8.0",
     "figlet": "^1.2.4",
     "pascalcase": "^1.0.0",
-    "pkg-dir": "^4.2.0"
+    "pkg-dir": "^4.2.0",
+    "update-check": "^1.5.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.19.2",
