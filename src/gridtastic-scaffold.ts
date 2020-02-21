@@ -6,12 +6,10 @@ import pascalcase from 'pascalcase';
 import isGridsomeProject from './isGridsomeProject';
 import arg from 'arg';
 
-// Scaffold --TYPE --name NAME      Scaffold out a new file
-// --template, -t                   /templates
-// --page, -p                       /pages
-// --component, -c                  /components
-// --layout, -l                     /layouts
-// --name, -n  SomeFilename         Filename to be used (will be pascal cased by CLI)
+async function touchDir(dirPath: string): Promise<void> {
+	let fsPromises = fs.promises;
+	await fsPromises.mkdir(dirPath);
+}
 
 export default async (argv: string[]): Promise<void> => {
 	const args = arg({
@@ -76,10 +74,11 @@ export default async (argv: string[]): Promise<void> => {
 			let filename: string = pascalcase(name);
 			let pascalType: string = pascalcase(type);
 
-			if (fs.existsSync(`./src/${type}s/${filename}.vue`)) {
+			if (fs.existsSync(`${pkgRoot}/${type}s/${filename}.vue`)) {
 				log(chalk.red(`${filename}.vue already exists!`));
 				process.exit(126);
 			} else {
+				fs.existsSync(`./src/${type}s`) || touchDir(`./src/${type}s`);
 				fs.copyFileSync(`${pkgRoot}/templates/${pascalType}.vue`, `./src/${type}s/${filename}.vue`);
 				log(chalk.green(`src/${type}s/${filename}.vue`));
 			}
