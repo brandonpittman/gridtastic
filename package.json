@@ -1,6 +1,6 @@
 {
   "name": "gridtastic",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "description": "A suite of helpers to augment the Gridsome CLI.",
   "bin": {
     "gridtastic": "dist/cli/index.js"
