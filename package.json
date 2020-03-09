@@ -22,6 +22,7 @@
     "degit": "^2.8.0",
     "pascalcase": "^1.0.0",
     "pkg-dir": "^4.2.0",
+    "signale": "^1.4.0",
     "update-check": "^1.5.3"
   },
   "devDependencies": {

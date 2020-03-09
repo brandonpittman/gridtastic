@@ -1,6 +1,7 @@
 import degit from 'degit';
 import chalk from 'chalk';
 import arg from 'arg';
+import signale from 'signale';
 
 export default (argv: string[]): void => {
 	const args = arg({
@@ -40,9 +41,12 @@ export default (argv: string[]): void => {
 	//   console.log(info.message);
 	// });
 
+	const init = signale.scope('init');
+
+	init.wait(`Cloning ${repo}...`);
+
 	emitter.clone(dest).then(() => {
-		console.log(chalk.bold.green(`\nCloned ${repo} to ${dest}.\n`));
-		console.log(chalk.underline('Run the following command:\n'));
-		console.log(`cd ${dest} && npm install && gridsome develop`);
+		init.success(`Cloned ${repo} to ${dest}.`);
+		init.info(`Run the following command: cd ${dest} && npm install && gridsome develop`);
 	});
 };
