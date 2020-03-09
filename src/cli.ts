@@ -5,49 +5,50 @@ import chalk from 'chalk';
 import arg from 'arg';
 import pkg from '../package.json';
 import checkForUpdate from 'update-check';
+import signale from 'signale';
 
 const updateCheck = async (): Promise<void> => {
-  let update = null;
+	let update = null;
 
-  try {
-    update = await checkForUpdate(pkg);
-  } catch (err) {
-    let msg: string = err;
-    console.error(`Failed to check for updates: ${msg}`);
-  }
+	try {
+		update = await checkForUpdate(pkg);
+	} catch (err) {
+		let msg: string = err;
+		console.error(`Failed to check for updates: ${msg}`);
+	}
 
-  if (update) {
-    let msg: string = update.latest;
-    console.log(`The latest version is ${msg}. Please update!`);
-  }
+	if (update) {
+		let msg: string = update.latest;
+		console.log(`The latest version is ${msg}. Please update!`);
+	}
 };
 
 updateCheck();
 
 const args = arg({
-  '--version': Boolean,
-  '--help': Boolean,
-  '-h': '--help',
-  '-v': '--version'
+	'--version': Boolean,
+	'--help': Boolean,
+	'-h': '--help',
+	'-v': '--version'
 }, {permissive: true});
 
 const commands = {
-  init: async () => import('./gridtastic-init').then(i => i.default),
-  scaffold: async () => import('./gridtastic-scaffold').then(async i => i.default),
-  override: async () => import('./gridtastic-override').then(async i => i.default),
-  fresh: async () => import('./gridtastic-fresh').then(async i => i.default),
-  deck: async () => import('./gridtastic-deck').then(async i => i.default)
+	init: async () => import('./gridtastic-init').then(i => i.default),
+	scaffold: async () => import('./gridtastic-scaffold').then(async i => i.default),
+	override: async () => import('./gridtastic-override').then(async i => i.default),
+	fresh: async () => import('./gridtastic-fresh').then(async i => i.default),
+	deck: async () => import('./gridtastic-deck').then(async i => i.default)
 };
 
 const foundCommand = Boolean(commands[args._[0]]);
 
 if (!foundCommand && args['--version']) {
-  log(pkg.version);
-  process.exit(0);
+	log(pkg.version);
+	process.exit(0);
 }
 
 if (!foundCommand && args['--help']) {
-  log(chalk`
+	log(chalk`
     {bold Usage}
       $ gridtastic {bold <command>}
 
@@ -61,23 +62,25 @@ if (!foundCommand && args['--help']) {
     For more information run a command with the --help flag
       $ gridtastic scaffold --help
 `);
-  process.exit(0);
+	process.exit(0);
+}
+
+if (!args._[0]) {
+	process.exit(0);
 }
 
 if (!foundCommand) {
-  process.exit(0);
+	signale.error('Command not recognized. Run gridtastic --help to see available commands.');
+	process.exit(1);
 }
 
 const command = commands[args._[0]];
 const forwardedArgs = args._.slice(1);
 
 if (args['--help']) {
-  forwardedArgs.push('--help');
+	forwardedArgs.push('--help');
 }
 
-if (command) {
-  command().then(exec => exec(forwardedArgs));
-} else {
-  console.warn('Command not recognized.\n\nRun gridtastic --help to see available commands.');
-  process.exit(1);
+if (typeof command === 'function') {
+	command().then((exec: any) => exec(forwardedArgs));
 }
