@@ -553,9 +553,9 @@ eslint-plugin-ava@^10.2.0:
     resolve-from "^5.0.0"
 
 eslint-plugin-unicorn@^17.0.1:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-17.0.1.tgz#4ac87b39abd5df19e970282c6d01a0406fd1cce8"
-  integrity sha512-50PXADghwZxRUJ3xOTfWFAsrbPkryrslludMABWExICGheRrYiBQMldeeZpFQU6u1d4pB87zY31cQA/Ut8GIRQ==
+  version "17.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-17.1.0.tgz#62124cba4afe0fa0ffe228f466bee77a9916f63c"
+  integrity sha512-yYNgXXSnFY73yvcaAB3z32SOY4km5NDzbY1mCSc6gVrKXgvGdU7K1IMJqQpoOrj2+QzdA1Mz0qLYn/ITGuNSFg==
   dependencies:
     ci-info "^2.0.0"
     clean-regexp "^1.0.0"
@@ -1474,15 +1474,10 @@ redent@^2.0.0:
     indent-string "^3.0.0"
     strip-indent "^2.0.0"
 
-regexp-tree@^0.1.20:
+regexp-tree@^0.1.20, regexp-tree@~0.1.1:
   version "0.1.20"
   resolved "https://registry.yarnpkg.com/regexp-tree/-/regexp-tree-0.1.20.tgz#d4ca65e4ab9ab05262acfce674dadd02d0fb9808"
   integrity sha512-gSiH74kc00oTbQkN7tZogZe0ttKwyxyDVLAnU20aWoarbLE9AypbJHRlZ567h4Zi19q3cPVRWDYbfECElrHgsQ==
-
-regexp-tree@~0.1.1:
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/regexp-tree/-/regexp-tree-0.1.19.tgz#9326e91d8d1d23298dd33a78cf5e788f57cdc359"
-  integrity sha512-mVeVLF/qg5qFbZSW0f7pXbuVX73dKIjuhOyC2JLKxzmpya75O4qLcvI9j0jp31Iz7IAkEVHa1UErDCAqaLKo5A==
 
 regexpp@^2.0.1:
   version "2.0.1"
