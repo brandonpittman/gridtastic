@@ -14,12 +14,12 @@ const updateCheck = async (): Promise<void> => {
 		update = await checkForUpdate(pkg);
 	} catch (err) {
 		let msg: string = err;
-		console.error(`Failed to check for updates: ${msg}`);
+		signale.error(`Failed to check for updates: ${msg}`);
 	}
 
 	if (update) {
 		let msg: string = update.latest;
-		console.log(`The latest version is ${msg}. Please update!`);
+		signale.info(`\nThe latest version is ${msg}. Please update!\n`);
 	}
 };
 
