@@ -2,8 +2,9 @@ import degit from 'degit';
 import chalk from 'chalk';
 import arg from 'arg';
 import signale from 'signale';
+import fs from 'fs';
 
-export default (argv: string[]): void => {
+export default async (argv: string[]): Promise<void> => {
 	const args = arg({
 		'--repo': String,
 		'--dest': String,
@@ -27,8 +28,8 @@ export default (argv: string[]): void => {
 	}
 
 	let {
-		'--repo': repo = 'brandonpittman/gridsome-starter-default',
-		'--dest': dest = 'gridsome-starter-default'
+		'--repo': repo = 'brandonpittman/aperitif',
+		'--dest': dest = 'aperitif'
 	} = args;
 
 	let emitter = degit(repo, {
@@ -37,16 +38,15 @@ export default (argv: string[]): void => {
 		verbose: true
 	});
 
-	// Emitter.on('info', info => {
-	//   console.log(info.message);
-	// });
-
 	const init = signale.scope('init');
 
-	init.wait(`Cloning ${repo}...`);
+	if (fs.existsSync(dest)) {
+		init.error(`Directory "${dest}" already exists!`);
+		process.exit(0);
+	}
 
-	emitter.clone(dest).then(() => {
-		init.success(`Cloned ${repo} to ${dest}.`);
-		init.info(`Run the following command: cd ${dest} && npm install && gridsome develop`);
-	});
+	init.wait(`Cloning ${repo}...`);
+	await emitter.clone(dest);
+	init.success(`Cloned ${repo} to ${dest}.`);
+	init.info(`Run the following command: cd ${dest} && npm install && gridsome develop`);
 };
