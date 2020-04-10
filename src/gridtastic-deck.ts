@@ -3,15 +3,15 @@ import init from './gridtastic-init';
 import arg from 'arg';
 
 export default (argv: string[]): void => {
-	const args = arg({
-		'--repo': String,
-		'--dest': String,
-		'--help': Boolean,
-		'-h': '--help'
-	}, {argv});
+  const args = arg({
+    '--repo': String,
+    '--dest': String,
+    '--help': Boolean,
+    '-h': '--help'
+  }, {argv});
 
-	if (args['--help']) {
-		console.log(chalk`
+  if (args['--help']) {
+    console.log(chalk`
     {bold Description}
       Creates a slide deck
 
@@ -22,13 +22,13 @@ export default (argv: string[]): void => {
     is the desired directory name for the clone repository. [repo] defaults to
     "brandonpittman/gridsome-starter-slides" and [dest] defaults to "gridsome-starter-slides".
     `);
-		process.exit(0);
-	}
+    process.exit(0);
+  }
 
-	init([
-		'--repo',
-		'brandonpittman/gridsome-starter-slides',
-		'--dest',
-		'gridsome-starter-slides'
-	]);
+  init([
+    '--repo',
+    'brandonpittman/gridsome-starter-slides',
+    '--dest',
+    'gridsome-starter-slides'
+  ]);
 };
