@@ -1,8 +1,8 @@
 {
   "gentypeconfig": {
-    "language": "untyped"
+    "language": "typescript"
   },
-  "name": "my-new-project",
+  "name": "Gridtastic",
   "version": "0.1.0",
   "sources": {
     "dir": "src",
