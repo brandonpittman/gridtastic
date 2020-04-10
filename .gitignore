@@ -5,3 +5,6 @@ yarn.lock
 dist/
 package-lock.json
 gridsome-starter-default
+lib
+.merlin
+.bsb.lock

@@ -6,6 +6,7 @@
     "gridtastic": "dist/cli/index.js",
     "grt": "dist/cli/index.js"
   },
+  "type": "module",
   "files": [
     "dist/cli/index.js",
     "templates"
@@ -17,7 +18,10 @@
     "build": "del dist && ncc build src/cli.ts -o dist/cli -m",
     "watch": "del dist && ncc build src/cli.ts -o dist/cli -w"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bs-platform": "^7.2.2",
+    "gentype": "^3.20.0"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",

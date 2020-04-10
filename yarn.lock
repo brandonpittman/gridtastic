@@ -243,6 +243,11 @@ braces@^3.0.1:
   dependencies:
     fill-range "^7.0.1"
 
+bs-platform@^7.2.2:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-7.2.2.tgz#76fdc63e4889458ae3d257a0132107a792f2309c"
+  integrity sha512-PWcFfN+jCTtT/rMaHDhKh+W9RUTpaRunmSF9vbLYcrJbpgCNW6aFKAY33u0P3mLxwuhshN3b4FxqGUBPj6exZQ==
+
 buf-compare@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/buf-compare/-/buf-compare-1.0.1.tgz#fef28da8b8113a0a0db4430b0b6467b69730b34a"
@@ -806,6 +811,11 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
+
+gentype@^3.20.0:
+  version "3.20.0"
+  resolved "https://registry.yarnpkg.com/gentype/-/gentype-3.20.0.tgz#fffb1f9fdd3e8f61b6872d73661438b91f738568"
+  integrity sha512-wgs4k2d0UWJJQj1X6aPjSDQdsz4ORmBrzViu7/LvgRZZSd1MbpTyBNE7R0LvqNztIncHBXgMLsOE8iKZ0xZWlg==
 
 get-caller-file@^2.0.1:
   version "2.0.5"
